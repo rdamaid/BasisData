@@ -1,0 +1,34 @@
+CREATE DATABASE tugas6;
+\connect "tugas6";
+CREATE TABLE BarangLogistik (
+	Id_Barang VARCHAR(10) NOT NULL,
+	Nama_Barang VARCHAR(25) NOT NULL,
+	Jumlah_Barang SMALLINT, 
+	Tanggal_Datang DATE,
+	Waktu_Datang TIME,
+	CONSTRAINT PK_BarangLogistik PRIMARY KEY (Id_Barang)
+);
+-----------------------------------------  1
+
+ALTER TABLE BarangLogistik
+	ADD Jenis_Barang SMALLINT;
+-----------------------------------------  2
+
+INSERT INTO BarangLogistik (Id_Barang, Nama_Barang, Jumlah_Barang, Tanggal_Datang, Waktu_Datang, Jenis_Barang) VALUES ( 'KH001', 'Kayu_Hitam', 100, '2001-01-01', '06:06', 1);
+INSERT INTO BarangLogistik (Id_Barang, Nama_Barang, Jumlah_Barang, Tanggal_Datang, Waktu_Datang, Jenis_Barang) VALUES ( 'KP001', 'Kayu_Putih', 110, '2002-01-01', '07:07', 0);
+INSERT INTO BarangLogistik (Id_Barang, Nama_Barang, Jumlah_Barang, Tanggal_Datang, Waktu_Datang, Jenis_Barang) VALUES ( 'KK001', 'Kayu_Kuning', 111, '2010-01-01', '10:10', 0);
+INSERT INTO BarangLogistik (Id_Barang, Nama_Barang, Jumlah_Barang, Tanggal_Datang, Waktu_Datang, Jenis_Barang) VALUES ( 'KM001', 'Kayu_Merah', 10, '2016-01-01', '11:11', 1);
+INSERT INTO BarangLogistik (Id_Barang, Nama_Barang, Jumlah_Barang, Tanggal_Datang, Waktu_Datang, Jenis_Barang) VALUES ( 'KB001', 'Kayu_Biru', 5, '2018-10-01', '07:00', 1);
+INSERT INTO BarangLogistik (Id_Barang, Nama_Barang, Jumlah_Barang, Tanggal_Datang, Waktu_Datang, Jenis_Barang) VALUES ( 'KJ001', 'Kayu_Jingga', 200, '2013-10-10', '11:12', 1);
+INSERT INTO BarangLogistik (Id_Barang, Nama_Barang, Jumlah_Barang, Tanggal_Datang, Waktu_Datang, Jenis_Barang) VALUES ( 'KJ002', 'Kayu_Jingga', 200, '2012-10-10', '10:01', 1);
+INSERT INTO BarangLogistik (Id_Barang, Nama_Barang, Jumlah_Barang, Tanggal_Datang, Waktu_Datang, Jenis_Barang) VALUES ( 'KA001', 'Kayu Abu', 500, '2013-10-10', '10:01', 0);
+INSERT INTO BarangLogistik (Id_Barang, Nama_Barang, Jumlah_Barang, Tanggal_Datang, Waktu_Datang, Jenis_Barang) VALUES ( 'KH002', 'Kayu Hijau', 500, '2009-10-10', '01:10', 1);
+INSERT INTO BarangLogistik (Id_Barang, Nama_Barang, Jumlah_Barang, Tanggal_Datang, Waktu_Datang, Jenis_Barang) VALUES ( 'KL001', 'Kayu Lama', 5000, '2000-10-10', '02:20', 0);
+SELECT * FROM BarangLogistik;
+------------------------------------------  3
+
+SELECT * FROM BarangLogistik WHERE Jenis_Barang = 0;
+------------------------------------------  4
+
+SELECT * FROM BarangLogistik ORDER BY (Tanggal_Datang, Waktu_Datang) ASC;
+------------------------------------------  5
