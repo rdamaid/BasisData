@@ -1,0 +1,33 @@
+
+
+##### Nomor 1-a
+SELECT ssn, fname, lname, pname
+FROM employee E JOIN project P ON E.dnum = P.dnum
+WHERE E.superssn IS NULL
+ORDER BY E.ssn;
+
+##### Nomor 1-b
+INSERT INTO Works_On VALUES ('E012', 3, 20);
+INSERT INTO dependent VALUES('E012', 'Hari', 'M', '10/10/2000', 'SON');
+
+SELECT E.ssn, E.fname, E.lname, D.dependent_name, D.relationship
+FROM employee E JOIN works_on W ON E.ssn = W.essn
+JOIN dependent D ON E.ssn = D.essn AND D.essn = W.essn
+JOIN (SELECT W.essn
+FROM works_on W
+GROUP BY W.essn
+HAVING COUNT(*) = 1) X ON X.essn = E.ssn;
+
+##### Nomor 2-a
+CREATE VIEW v1 AS
+SELECT dnumber AS Nomor, dname AS Nama
+FROM department;
+SELECT * FROM v1
+
+##### Nomor 2-b
+CREATE VIEW v2 AS
+SELECT E.ssn AS SSN, 
+       CONCAT(E.fname,' ',E.mname' 'E.lname) AS Ename, 
+       D.dname AS Dname
+FROM employee E, department D, works_on W;
+SELECT * FROM v2
