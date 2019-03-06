@@ -31,3 +31,18 @@ SELECT E.ssn AS SSN,
        D.dname AS Dname
 FROM employee E, department D, works_on W;
 SELECT * FROM v2
+
+
+
+
+##### Nomor 5
+INSERT INTO works_on VALUES('E013', 2, 75.0);
+INSERT INTO works_on VALUES('E013', 3, 65.0);
+
+SELECT DISTINCT D.dependent_name, D.sex, D.bdate, D.relationship
+FROM employee E JOIN works_on W ON E.ssn = W.essn
+JOIN dependent D ON E.ssn = D.essn AND D.essn = W.essn
+WHERE D.essn IN (SELECT W.essn
+FROM works_on W
+GROUP BY W.essn
+HAVING COUNT(*) = 2 AND AVG(hours) = 70.0) X ON X.essn = E.ssn;
